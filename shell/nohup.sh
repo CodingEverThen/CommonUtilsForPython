@@ -1,0 +1,1 @@
+nohup python -u /data/FileCompile/Timer.py > Timer.log 2>&1 &

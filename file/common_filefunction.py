@@ -12,6 +12,7 @@ import os
 import getpass
 import shutil
 import time
+import datetime
 
 # 获取当前系统用户名
 # user_name = getpass.getuser()
@@ -117,3 +118,21 @@ def getfileinfo(path):
     fileinfo["filecount"] = count
     fileinfo["filecreatdate"] = filecreatdate
     return fileinfo
+
+def deleteFilesByTime(count, path):
+    """
+    删除从当天开始的指定时间段以前的指定文件夹的文件,包含当天
+    :param count: 指定的时间段天数
+    :param path: 待删除的文件的文件夹路径
+    """
+    # 获取当天日期
+    currentDay = str(datetime.date.today()-datetime.timedelta(days=count))
+    currentTime = long(time.mktime(time.strptime(currentDay, "%Y-%m-%d")) * 1000)
+    print("指定的日期的时间戳是:{time}".format(time=currentTime))
+    for files in os.listdir(path):
+        fullPath = os.path.join(path, files)
+        # 获取文件生成日期
+        timeStruct = long(os.path.getmtime(fullPath) * 1000)
+        print("{filename} 的创建时间戳是:{createtime}".format(filename = files, createtime = timeStruct))
+        if timeStruct < currentTime:
+            os.remove(fullPath)

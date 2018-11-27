@@ -11,6 +11,7 @@
 import os
 import getpass
 import shutil
+import time
 
 # 获取当前系统用户名
 # user_name = getpass.getuser()
@@ -87,3 +88,32 @@ def removeFiles(path):
          elif os.path.isdir(fileFullPath):
             # 判断当前路径是文件夹的时候则执行删除文件夹的操作
             shutil.rmtree(fileFullPath)
+
+def getfileinfo(path):
+    """
+    获取文件信息 文件名，文件大小，文件行数，日期，文件创建日期
+    :param path: 完整文件路径
+    :return: 文件信息对象
+    """
+    # 获取文件名
+    filename = os.path.basename(path)
+    # 获取文件大小
+    filesize = os.path.getsize(path)
+    # 获取文件行数
+    count = 0
+    thefile = open(path, 'rb')
+    while True:
+        buffer = thefile.read(8192 * 1024)
+        if not buffer:
+            break
+        count += buffer.count('\n')
+    thefile.close()
+    # 获取文件生成日期
+    timeStruct = time.localtime(os.path.getmtime(path))
+    filecreatdate = time.strftime('%Y%m%d%H%M%S', timeStruct)
+    fileinfo = {}
+    fileinfo["filename"] = filename
+    fileinfo["filesize"] = filesize
+    fileinfo["filecount"] = count
+    fileinfo["filecreatdate"] = filecreatdate
+    return fileinfo

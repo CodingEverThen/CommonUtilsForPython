@@ -30,4 +30,4 @@ class allrows():
         print(count_num)
 
 if __name__ == '__main__':
-    allrows("C:\\Users\Carol\Desktop\code").count()
+    allrows("C:\Users\Carol\Desktop\\test").count()

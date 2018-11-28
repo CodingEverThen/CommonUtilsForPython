@@ -20,7 +20,7 @@
 |1|common_elasticsearch.py|有关ES的一些基本操作，增删改查等|
 |2|common_ftpupload.py|用于对ftp服务器的一些操作，上传、删除、查询等|
 |3|common_jsondata.py|对服务器上获取的json数据的一些操作，需要根据情况修改|
-|4|common_kafka.py|对kafka的一些操作，包括生产者和消费者，可通过配置文件配置相关信息|
+|4|common_kafka.py|kafka的基本生产者和消费者，可通过配置文件配置相关信息|
 |5|common_pymysql.py|使用pymysql对mysql数据库的增删改查操作|
 |6|common_redis.py|对redis的一些常用操作|
 |7|common_mongodb.py|常用的mongodb数据库的操作|

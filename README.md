@@ -24,6 +24,8 @@
 |5|common_pymysql.py|使用pymysql对mysql数据库的增删改查操作|
 |6|common_redis.py|对redis的一些常用操作|
 |7|common_mongodb.py|常用的mongodb数据库的操作|
+|8|common_monitorSystemInfoByPid.py|监控指定的进程号的内存和CPU使用情况|
+|9|common_monitorSystemInfoByService.py|监控指定的服务的内存和CPU使用情况|
 
 ### file
 主要对文件进行相关操作的工具类
